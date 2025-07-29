@@ -1,0 +1,83 @@
+.ant-card {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.ant-card:hover {
+  box-shadow: 0 12px 36px 0 rgba(158,121,103,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+.ant-btn-primary {
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.ant-btn-primary:hover, .ant-btn-primary:focus {
+  background: var(--mocha-mousse-dark1) !important;
+  box-shadow: 0 4px 16px 0 rgba(158,121,103,0.18);
+  transform: translateY(-2px) scale(1.03);
+}
+.ant-tag-checkable {
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.ant-tag-checkable-checked {
+  box-shadow: 0 2px 8px 0 rgba(158,121,103,0.10);
+  transform: scale(1.08);
+}
+
+.catalog .ant-card {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  animation: card-fade-in 0.7s cubic-bezier(.4,1.3,.5,1) forwards;
+}
+.catalog .ant-card:nth-child(1) { animation-delay: 0.05s; }
+.catalog .ant-card:nth-child(2) { animation-delay: 0.12s; }
+.catalog .ant-card:nth-child(3) { animation-delay: 0.19s; }
+.catalog .ant-card:nth-child(4) { animation-delay: 0.26s; }
+.catalog .ant-card:nth-child(5) { animation-delay: 0.33s; }
+.catalog .ant-card:nth-child(6) { animation-delay: 0.40s; }
+.catalog .ant-card:nth-child(7) { animation-delay: 0.47s; }
+.catalog .ant-card:nth-child(8) { animation-delay: 0.54s; }
+@keyframes card-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ant-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.ant-btn-primary:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(158,121,103,0.18);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  transition: width 0.4s cubic-bezier(.4,1.3,.5,1), height 0.4s cubic-bezier(.4,1.3,.5,1), opacity 0.4s;
+  pointer-events: none;
+}
+.ant-btn-primary:active:after {
+  width: 220px;
+  height: 220px;
+  opacity: 0;
+  transition: 0s;
+}
+
+.ant-btn-primary.catalog-add-btn,
+button.ant-btn-primary.catalog-add-btn {
+  background: var(--mocha-mousse-main) !important;
+  border-color: var(--mocha-mousse-main) !important;
+  color: #fff !important;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.ant-btn-primary.catalog-add-btn:hover,
+button.ant-btn-primary.catalog-add-btn:hover,
+.ant-btn-primary.catalog-add-btn:focus,
+button.ant-btn-primary.catalog-add-btn:focus {
+  background: #fff !important;
+  color: var(--mocha-mousse-main) !important;
+  border-color: var(--mocha-mousse-main) !important;
+} 

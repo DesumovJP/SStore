@@ -1,0 +1,127 @@
+/* Admin Panel Styles */
+.admin-container {
+  background: var(--mocha-mousse-light1);
+  min-height: 100vh;
+}
+
+.admin-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(158,121,103,0.08);
+  margin-bottom: 24px;
+}
+
+.admin-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.admin-form-item {
+  margin-bottom: 16px;
+}
+
+.admin-button {
+  border-radius: 8px;
+  font-weight: 600;
+  height: 40px;
+  padding: 0 16px;
+}
+
+.admin-input {
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+}
+
+.admin-input:focus,
+.admin-input:hover {
+  border-color: var(--mocha-mousse-main);
+  box-shadow: 0 0 0 2px rgba(158,121,103,0.1);
+}
+
+.admin-select {
+  border-radius: 8px;
+}
+
+.admin-switch {
+  border-radius: 12px;
+}
+
+.admin-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+}
+
+.admin-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.admin-edit-button {
+  color: var(--mocha-mousse-main);
+  border-color: var(--mocha-mousse-main);
+}
+
+.admin-edit-button:hover {
+  background: var(--mocha-mousse-main);
+  color: white;
+  border-color: var(--mocha-mousse-main);
+}
+
+.admin-delete-button {
+  color: #ff4d4f;
+  border-color: #ff4d4f;
+}
+
+.admin-delete-button:hover {
+  background: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+}
+
+.admin-save-button {
+  background: var(--mocha-mousse-main);
+  border-color: var(--mocha-mousse-main);
+  color: white;
+}
+
+.admin-save-button:hover {
+  background: #8b6b4a;
+  border-color: #8b6b4a;
+  color: white;
+}
+
+.admin-cancel-button {
+  color: #666;
+  border-color: #d9d9d9;
+}
+
+.admin-cancel-button:hover {
+  background: #f5f5f5;
+  color: #333;
+  border-color: #d9d9d9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 16px;
+  }
+  
+  .admin-card {
+    margin-bottom: 16px;
+  }
+  
+  .admin-actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .admin-button {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+} 

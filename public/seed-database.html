@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додавання продуктів до Firebase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .info { color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛠️ Додавання продуктів до Firebase</h1>
+        <p>Цей інструмент додасть початкові продукти до вашої Firebase бази даних.</p>
+        
+        <button id="seedButton" onclick="seedDatabase()">🌱 Додати початкові продукти</button>
+        <button id="checkButton" onclick="checkProducts()">📊 Перевірити продукти</button>
+        
+        <div id="log" class="log"></div>
+    </div>
+
+    <script type="module">
+        // Імпортуємо Firebase
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Конфігурація Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyCmkgvmWtC6vyqLdbUuH-3msicYRt885dU",
+            authDomain: "test-task-project-ec1d3.firebaseapp.com",
+            projectId: "test-task-project-ec1d3",
+            storageBucket: "test-task-project-ec1d3.firebasestorage.app",
+            messagingSenderId: "645851997520",
+            appId: "1:645851997520:web:f0f5c0fb7ccde2d5023855",
+            measurementId: "G-LEW3D0F4JP"
+        };
+
+        // Ініціалізація Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const log = document.getElementById('log');
+        const seedButton = document.getElementById('seedButton');
+        const checkButton = document.getElementById('checkButton');
+
+        function addLog(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = type;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            log.appendChild(logEntry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        const initialProducts = [
+            {
+                name: "Nike Air Max 270",
+                price: 129.99,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
+                description: "Класичні кросівки з повітряною подушкою для максимального комфорту",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+                category: "Спортивні",
+                brand: "Nike",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "Adidas Ultraboost 22",
+                price: 179.99,
+                image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop",
+                description: "Бігові кросівки з технологією Boost для відмінної амортизації",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
+                category: "Бігові",
+                brand: "Adidas",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "Puma RS-X",
+                price: 89.99,
+                image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop",
+                description: "Ретро-стильні кросівки з яскравим дизайном та комфортною підошвою",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+                category: "Повсякденні",
+                brand: "Puma",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "New Balance 574",
+                price: 79.99,
+                image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
+                description: "Культові кросівки з класичним дизайном та високою якістю",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
+                category: "Повсякденні",
+                brand: "New Balance",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "Converse Chuck Taylor",
+                price: 59.99,
+                image: "https://images.unsplash.com/photo-1607522370275-f14206abe5d3?w=400&h=400&fit=crop",
+                description: "Легендарні кросівки, які залишаються популярними десятиліттями",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+                category: "Повсякденні",
+                brand: "Converse",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "Vans Old Skool",
+                price: 64.99,
+                image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&h=400&fit=crop",
+                description: "Скейтерські кросівки з характерною бічною смугою",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+                category: "Скейтерські",
+                brand: "Vans",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "Reebok Classic",
+                price: 69.99,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop",
+                description: "Класичні кросівки з м'якою підошвою та стильним дизайном",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+                category: "Повсякденні",
+                brand: "Reebok",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            },
+            {
+                name: "ASICS Gel-Kayano",
+                price: 149.99,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop",
+                description: "Професійні бігові кросівки з технологією Gel для амортизації",
+                availableSizes: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46],
+                category: "Бігові",
+                brand: "ASICS",
+                inStock: true,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }
+        ];
+
+        window.seedDatabase = async function() {
+            try {
+                seedButton.disabled = true;
+                addLog('Початок додавання продуктів...', 'info');
+                
+                for (const product of initialProducts) {
+                    try {
+                        const docRef = await addDoc(collection(db, "products"), product);
+                        addLog(`✅ Додано: ${product.name} (ID: ${docRef.id})`, 'success');
+                    } catch (error) {
+                        addLog(`❌ Помилка додавання ${product.name}: ${error.message}`, 'error');
+                    }
+                }
+                
+                addLog('🎉 Додавання продуктів завершено!', 'success');
+            } catch (error) {
+                addLog(`❌ Загальна помилка: ${error.message}`, 'error');
+            } finally {
+                seedButton.disabled = false;
+            }
+        };
+
+        window.checkProducts = async function() {
+            try {
+                checkButton.disabled = true;
+                addLog('Перевірка продуктів в базі даних...', 'info');
+                
+                const querySnapshot = await getDocs(collection(db, "products"));
+                const products = [];
+                querySnapshot.forEach((doc) => {
+                    products.push({ id: doc.id, ...doc.data() });
+                });
+                
+                addLog(`📊 Знайдено ${products.length} продуктів:`, 'info');
+                products.forEach(product => {
+                    addLog(`  • ${product.name} - ${product.price} грн`, 'info');
+                });
+                
+                if (products.length === 0) {
+                    addLog('⚠️ Продукти не знайдено. Спробуйте додати їх!', 'error');
+                }
+            } catch (error) {
+                addLog(`❌ Помилка перевірки: ${error.message}`, 'error');
+            } finally {
+                checkButton.disabled = false;
+            }
+        };
+
+        // Автоматична перевірка при завантаженні
+        window.addEventListener('load', () => {
+            addLog('🚀 Інструмент готовий до роботи!', 'success');
+            checkProducts();
+        });
+    </script>
+</body>
+</html> 

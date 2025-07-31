@@ -81,29 +81,29 @@ const Home: React.FC = () => {
                       left: slide.position === 'left' ? 0 : 'unset',
                       right: slide.position === 'right' ? 0 : 'unset',
                       transform: 'translateY(-50%)',
-                      width: '50%',
+                      width: screens.xs ? '100%' : '50%',
                       display: 'flex',
                       flexDirection: 'column',
-                      alignItems: slide.position === 'left' ? 'flex-start' : 'flex-end',
+                      alignItems: screens.xs ? 'center' : (slide.position === 'left' ? 'flex-start' : 'flex-end'),
                       justifyContent: 'center',
-                      padding: '0 5vw',
+                      padding: screens.xs ? '0 12px' : '0 5vw',
                       zIndex: 2,
                     }}
                   >
                     <div
                       style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
+                        position: screens.xs ? 'relative' : 'absolute',
+                        top: screens.xs ? 'unset' : '50%',
+                        left: screens.xs ? 'unset' : '50%',
+                        transform: screens.xs ? 'none' : 'translate(-50%, -50%)',
                         width: '100%',
-                        maxWidth: '95vw',
+                        maxWidth: screens.xs ? '100%' : '95vw',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         zIndex: 2,
-                        margin: screens.xs ? '0 12px' : '0 auto',
+                        margin: screens.xs ? '0' : '0 auto',
                       }}
                     >
                       <div style={{

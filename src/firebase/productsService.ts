@@ -164,4 +164,28 @@ export const getProductsByBrand = async (brand: string): Promise<Product[]> => {
     console.error('Помилка при отриманні продуктів за брендом:', error);
     throw error;
   }
+};
+
+// Масове додавання продуктів
+export const addMultipleProducts = async (products: Omit<Product, 'id'>[]): Promise<string[]> => {
+  try {
+    const batch = [];
+    const ids: string[] = [];
+    
+    for (const product of products) {
+      const productData = {
+        ...product,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      };
+      
+      const docRef = await addDoc(collection(db, COLLECTION_NAME), productData);
+      ids.push(docRef.id);
+    }
+    
+    return ids;
+  } catch (error) {
+    console.error('Помилка при масовому додаванні продуктів:', error);
+    throw error;
+  }
 }; 

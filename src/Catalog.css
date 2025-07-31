@@ -1,7 +1,10 @@
-.ant-card {
+/* Глобальні стилі карток - тільки для каталогу */
+.catalog .ant-card,
+.catalog-page .ant-card {
   transition: box-shadow 0.3s, transform 0.3s;
 }
-.ant-card:hover {
+.catalog .ant-card:hover,
+.catalog-page .ant-card:hover {
   box-shadow: 0 12px 36px 0 rgba(158,121,103,0.18);
   transform: translateY(-4px) scale(1.02);
 }

@@ -4,10 +4,62 @@
   min-height: 100vh;
 }
 
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.admin-title {
+  color: var(--mocha-mousse-main) !important;
+  margin: 0 !important;
+  text-align: center;
+  flex: 1;
+}
+
+.mobile-menu-btn {
+  background: var(--mocha-mousse-main);
+  border-color: var(--mocha-mousse-main);
+  border-radius: 8px;
+  height: 40px;
+  font-weight: 600;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mobile-menu-btn:hover {
+  background: #8b6b4a;
+  border-color: #8b6b4a;
+}
+
 .admin-card {
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 rgba(158,121,103,0.08);
   margin-bottom: 24px;
+  height: auto !important;
+  overflow: hidden !important;
+}
+
+/* Ant Design Card Styles - Специфічні для адмінки */
+.admin-container .ant-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+}
+
+.admin-container .ant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  overflow: hidden !important;
 }
 
 .admin-table {
@@ -15,8 +67,30 @@
   overflow: hidden;
 }
 
-.admin-form-item {
+.admin-form {
+  width: 100%;
+}
+
+.admin-form .ant-form-item {
   margin-bottom: 16px;
+}
+
+.admin-submit-btn {
+  background: var(--mocha-mousse-main);
+  border-color: var(--mocha-mousse-main);
+  border-radius: 8px;
+  font-weight: 600;
+  height: 40px;
+  padding: 0 16px;
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.admin-submit-btn:hover {
+  background: #8b6b4a;
+  border-color: #8b6b4a;
 }
 
 .admin-button {
@@ -24,6 +98,9 @@
   font-weight: 600;
   height: 40px;
   padding: 0 16px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .admin-input {
@@ -43,6 +120,12 @@
 
 .admin-switch {
   border-radius: 12px;
+}
+
+.admin-textarea {
+  resize: vertical;
+  min-height: 80px;
+  max-height: 200px;
 }
 
 .admin-image {
@@ -73,6 +156,9 @@
 .admin-delete-button {
   color: #ff4d4f;
   border-color: #ff4d4f;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .admin-delete-button:hover {
@@ -104,14 +190,157 @@
   border-color: #d9d9d9;
 }
 
+/* Mobile Product Card Styles */
+.mobile-product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  background: white;
+  margin-bottom: 12px;
+}
+
+.mobile-product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  align-self: center;
+}
+
+.mobile-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-product-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--mocha-mousse-main);
+}
+
+.mobile-product-price {
+  font-weight: 600;
+  font-size: 18px;
+  color: #52c41a;
+}
+
+.mobile-product-brand,
+.mobile-product-category,
+.mobile-product-sizes,
+.mobile-product-stock {
+  font-size: 14px;
+  color: #666;
+}
+
+.mobile-product-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mobile-edit-btn,
+.mobile-delete-btn {
+  flex: 1;
+  min-width: 120px;
+  height: 36px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mobile-edit-btn {
+  color: var(--mocha-mousse-main);
+  border-color: var(--mocha-mousse-main);
+}
+
+.mobile-edit-btn:hover {
+  background: var(--mocha-mousse-main);
+  color: white;
+  border-color: var(--mocha-mousse-main);
+}
+
+.mobile-delete-btn {
+  color: #ff4d4f;
+  border-color: #ff4d4f;
+  min-width: auto !important;
+  padding: 4px 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mobile-delete-btn:hover {
+  background: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+}
+
+/* Mobile Drawer Styles */
+.mobile-drawer .ant-drawer-content-wrapper {
+  width: 100% !important;
+}
+
+.mobile-drawer .ant-drawer-body {
+  padding: 16px;
+}
+
+.mobile-drawer .ant-form-item {
+  margin-bottom: 16px;
+}
+
+.mobile-drawer .ant-input,
+.mobile-drawer .ant-input-number,
+.mobile-drawer .ant-select-selector {
+  border-radius: 8px;
+  height: 40px;
+}
+
+.mobile-drawer .ant-input-number-input {
+  height: 38px;
+}
+
+.mobile-drawer .ant-select-selection-item {
+  line-height: 38px;
+}
+
+.mobile-drawer .ant-input-number-handler-wrap {
+  display: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .admin-container {
     padding: 16px;
   }
   
+  .admin-header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .admin-title {
+    font-size: 24px !important;
+    line-height: 1.2 !important;
+  }
+  
   .admin-card {
     margin-bottom: 16px;
+    border-radius: 12px;
+  }
+  
+  .admin-container .ant-card-body {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
   }
   
   .admin-actions {
@@ -123,5 +352,132 @@
     height: 32px;
     padding: 0 12px;
     font-size: 12px;
+  }
+  
+  .admin-table .ant-table-thead > tr > th {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  .admin-table .ant-table-tbody > tr > td {
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+  
+  .admin-table .ant-table-pagination {
+    margin: 16px 0;
+  }
+  
+  .admin-table .ant-pagination-item,
+  .admin-table .ant-pagination-prev,
+  .admin-table .ant-pagination-next {
+    min-width: 28px;
+    height: 28px;
+    line-height: 26px;
+  }
+  
+  .admin-table .ant-pagination-item a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-container {
+    padding: 12px;
+  }
+  
+  .admin-title {
+    font-size: 20px !important;
+  }
+  
+  .admin-container .ant-card-body {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  
+  .mobile-product-card {
+    padding: 12px;
+  }
+  
+  .mobile-product-image {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mobile-product-name {
+    font-size: 14px;
+  }
+  
+  .mobile-product-price {
+    font-size: 16px;
+  }
+  
+  .mobile-product-brand,
+  .mobile-product-category,
+  .mobile-product-sizes,
+  .mobile-product-stock {
+    font-size: 12px;
+  }
+  
+  .mobile-product-actions {
+    flex-direction: column;
+  }
+  
+  .mobile-edit-btn,
+  .mobile-delete-btn {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .admin-table .ant-table-thead > tr > th {
+    padding: 6px 2px;
+    font-size: 11px;
+  }
+  
+  .admin-table .ant-table-tbody > tr > td {
+    padding: 6px 2px;
+    font-size: 11px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .admin-container {
+    padding: 20px;
+  }
+  
+  .admin-header {
+    margin-bottom: 28px;
+  }
+  
+  .admin-title {
+    font-size: 28px !important;
+  }
+  
+  .admin-container .ant-card-body {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  
+  .mobile-product-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .mobile-product-image {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+  }
+  
+  .mobile-product-info {
+    flex: 1;
+  }
+  
+  .mobile-product-actions {
+    flex-shrink: 0;
   }
 } 

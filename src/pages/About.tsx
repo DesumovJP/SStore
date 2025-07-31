@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Typography, Card, Grid, Breadcrumb, Form, Input, Button, message, Row, Col, Upload, Image } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import './About.css';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -14,7 +15,7 @@ const About: React.FC = () => {
     form.resetFields();
   };
   return (
-    <Layout style={{ background: 'var(--mocha-mousse-light1)' }}>
+    <Layout style={{ background: 'var(--mocha-mousse-light1)' }} className="about-page">
       <Content style={{ padding: screens.xs ? '16px 0' : '48px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: screens.xs ? 0 : 500 }}>
         <div className="container" style={{ maxWidth: 1900, margin: '0 auto', padding: screens.xs ? '0 16px' : '0 24px' }}>
           {/* Breadcrumb тільки для ПК */}
@@ -36,10 +37,12 @@ const About: React.FC = () => {
                   padding: screens.xs ? 18 : 40,
                   transition: 'box-shadow 0.3s',
                   margin: screens.xs ? '0' : '0',
-                  height: screens.xs ? 'auto' : 420,
+                  height: 'auto',
+                  minHeight: screens.xs ? 'auto' : 420,
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'center',
+                  overflow: 'hidden',
                 }}
               >
                 <Title level={2} style={{ color: 'var(--mocha-mousse-main)', fontWeight: 700, marginBottom: screens.xs ? 16 : 24, textAlign: 'center', fontSize: screens.xs ? 22 : 28 }}>Про нас</Title>
@@ -52,7 +55,99 @@ const About: React.FC = () => {
               </Card>
             </Col>
             <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-              <Card style={{ maxWidth: 700, width: '100%', borderRadius: 24, boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', background: '#fff', padding: screens.xs ? 8 : 24, height: screens.xs ? 'auto' : 420, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <Card
+                style={{
+                  maxWidth: 700,
+                  width: '100%',
+                  background: '#fff',
+                  borderRadius: 24,
+                  boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)',
+                  padding: screens.xs ? 8 : 24,
+                  transition: 'box-shadow 0.3s',
+                  margin: screens.xs ? '0' : '0',
+                  height: 'auto',
+                  minHeight: screens.xs ? 'auto' : 420,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{ 
+                  width: '100%', 
+                  height: screens.xs ? 300 : '100%', 
+                  borderRadius: 16, 
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
+                }}>
+                  <Image
+                    src={require('../img/alexandr-choi-CRvUeE2V0TA-unsplash.jpg')}
+                    alt="Кросівки"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    preview={false}
+                  />
+                </div>
+              </Card>
+            </Col>
+          </Row>
+
+          {/* Блок "Де нас знайти" під блоком "Про нас" */}
+          <Row gutter={[32, 32]} justify="center" align="stretch" style={{marginTop: 40}}>
+            <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <Card
+                style={{
+                  maxWidth: 700,
+                  width: '100%',
+                  background: '#fff',
+                  borderRadius: 24,
+                  boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)',
+                  padding: screens.xs ? 8 : 24,
+                  transition: 'box-shadow 0.3s',
+                  margin: screens.xs ? '0' : '0',
+                  height: 'auto',
+                  minHeight: screens.xs ? 'auto' : 420,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{ 
+                  width: '100%', 
+                  height: screens.xs ? 300 : '100%', 
+                  borderRadius: 16, 
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
+                }}>
+                  <Image
+                    src={require('../img/aryan-r-Y_wyAQElkR4-unsplash.jpg')}
+                    alt="Кросівки"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    preview={false}
+                  />
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <Card style={{ maxWidth: 700, width: '100%', borderRadius: 24, boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', background: '#fff', padding: screens.xs ? 8 : 24, height: 'auto', minHeight: screens.xs ? 'auto' : 420, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden' }}>
                 <Title level={4} style={{ color: 'var(--mocha-mousse-main)', marginBottom: 16, fontWeight: 700, textAlign: 'center' }}>Де нас знайти</Title>
                 <div style={{ width: '100%', height: 340, borderRadius: 16, overflow: 'hidden' }}>
                   <iframe
@@ -70,144 +165,10 @@ const About: React.FC = () => {
             </Col>
           </Row>
 
-          {/* Розділ з 4 зображеннями */}
-          <Row gutter={[32, 32]} justify="center" align="stretch" style={{marginTop: 40}}>
-            <Col xs={24}>
-              <Card style={{ 
-                maxWidth: 1200, 
-                width: '100%', 
-                margin: '0 auto', 
-                borderRadius: 24, 
-                boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', 
-                background: '#fff', 
-                padding: screens.xs ? 16 : 32 
-              }}>
-                <Title level={3} style={{ 
-                  color: 'var(--mocha-mousse-main)', 
-                  marginBottom: 24, 
-                  fontWeight: 700, 
-                  textAlign: 'center',
-                  fontSize: screens.xs ? 20 : 24
-                }}>
-                  Наші магазини
-                </Title>
-                <Paragraph style={{ 
-                  marginBottom: 32, 
-                  color: 'var(--mocha-mousse-dark4)', 
-                  fontSize: screens.xs ? 15 : 18, 
-                  textAlign: 'center' 
-                }}>
-                  Подивіться на якість та стиль наших кросівок вживу
-                </Paragraph>
-                <Row gutter={[16, 16]} justify="center">
-                  <Col xs={24} sm={12} md={6}>
-                    <div style={{ 
-                      borderRadius: 16, 
-                      overflow: 'hidden', 
-                      boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      width: '100%',
-                      height: screens.xs ? 200 : 250
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
-                    }}>
-                      <Image
-                        src={require('../img/alexandr-choi-CRvUeE2V0TA-unsplash.jpg')}
-                        alt="Кросівки 1"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        preview={false}
-                      />
-                    </div>
-                  </Col>
-                  <Col xs={24} sm={12} md={6}>
-                    <div style={{ 
-                      borderRadius: 16, 
-                      overflow: 'hidden', 
-                      boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      width: '100%',
-                      height: screens.xs ? 200 : 250
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
-                    }}>
-                      <Image
-                        src={require('../img/aryan-r-Y_wyAQElkR4-unsplash.jpg')}
-                        alt="Кросівки 2"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        preview={false}
-                      />
-                    </div>
-                  </Col>
-                  <Col xs={24} sm={12} md={6}>
-                    <div style={{ 
-                      borderRadius: 16, 
-                      overflow: 'hidden', 
-                      boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      width: '100%',
-                      height: screens.xs ? 200 : 250
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
-                    }}>
-                      <Image
-                        src={require('../img/shyam-mishra-rdMzDrU7vNg-unsplash.jpg')}
-                        alt="Кросівки 3"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        preview={false}
-                      />
-                    </div>
-                  </Col>
-                  <Col xs={24} sm={12} md={6}>
-                    <div style={{ 
-                      borderRadius: 16, 
-                      overflow: 'hidden', 
-                      boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      width: '100%',
-                      height: screens.xs ? 200 : 250
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
-                    }}>
-                      <Image
-                        src={require('../img/yiquan-zhang-Nx9ghtb0IpE-unsplash.jpg')}
-                        alt="Кросівки 4"
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        preview={false}
-                      />
-                    </div>
-                  </Col>
-                </Row>
-              </Card>
-            </Col>
-          </Row>
-
+          {/* Блок "Контакти магазину" з картинкою */}
           <Row gutter={[32, 32]} justify="center" align="stretch" style={{marginTop: 40}}>
             <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-              <Card style={{ maxWidth: 700, width: '100%', borderRadius: 24, boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', background: '#fff', padding: screens.xs ? 12 : 32, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <Card style={{ maxWidth: 700, width: '100%', borderRadius: 24, boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', background: '#fff', padding: screens.xs ? 12 : 32, height: 'auto', display: 'flex', flexDirection: 'column' }}>
                 <Title level={4} style={{ color: 'var(--mocha-mousse-main)', marginBottom: 16, fontWeight: 700, textAlign: 'left' }}>Контакти магазину</Title>
                 <Paragraph style={{ marginBottom: 8, color: '#555', fontSize: 16 }}>
                   <b>Instagram:</b> <a href="https://t.me/desumov" target="_blank" rel="noopener noreferrer">@desumov</a>
@@ -232,7 +193,105 @@ const About: React.FC = () => {
               </Card>
             </Col>
             <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-              <Card style={{ maxWidth: 700, width: '100%', margin: '0 auto', borderRadius: 24, boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', background: '#fff', padding: screens.xs ? 12 : 32, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <Card
+                style={{
+                  maxWidth: 700,
+                  width: '100%',
+                  background: '#fff',
+                  borderRadius: 24,
+                  boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)',
+                  padding: screens.xs ? 8 : 24,
+                  transition: 'box-shadow 0.3s',
+                  margin: screens.xs ? '0' : '0',
+                  height: 'auto',
+                  minHeight: screens.xs ? 'auto' : 420,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{ 
+                  width: '100%', 
+                  height: screens.xs ? 300 : '100%', 
+                  borderRadius: 16, 
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
+                }}>
+                  <Image
+                    src={require('../img/shyam-mishra-rdMzDrU7vNg-unsplash.jpg')}
+                    alt="Кросівки"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    preview={false}
+                  />
+                </div>
+              </Card>
+            </Col>
+          </Row>
+
+
+
+          <Row gutter={[32, 32]} justify="center" align="stretch" style={{marginTop: 40}}>
+            <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <Card
+                style={{
+                  maxWidth: 700,
+                  width: '100%',
+                  background: '#fff',
+                  borderRadius: 24,
+                  boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)',
+                  padding: screens.xs ? 8 : 24,
+                  transition: 'box-shadow 0.3s',
+                  margin: screens.xs ? '0' : '0',
+                  height: 'auto',
+                  minHeight: screens.xs ? 'auto' : 420,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{ 
+                  width: '100%', 
+                  height: screens.xs ? 350 : '100%', 
+                  borderRadius: 16, 
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 16px 0 rgba(158,121,103,0.15)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px 0 rgba(158,121,103,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 16px 0 rgba(158,121,103,0.15)';
+                }}>
+                  <Image
+                    src={require('../img/yiquan-zhang-Nx9ghtb0IpE-unsplash.jpg')}
+                    alt="Кросівки"
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      objectFit: 'cover',
+                      objectPosition: screens.xs ? 'center 30%' : 'center center'
+                    }}
+                    preview={false}
+                  />
+                </div>
+              </Card>
+            </Col>
+            <Col xs={24} md={12} style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <Card className="contact-form-card" style={{ maxWidth: 700, width: '100%', margin: '0 auto', borderRadius: 24, boxShadow: '0 8px 32px 0 rgba(158,121,103,0.13)', background: '#fff', padding: screens.xs ? 12 : 32, height: 'auto', display: 'flex', flexDirection: 'column' }}>
                 <Title level={3} style={{ color: 'var(--mocha-mousse-main)', marginBottom: 16, fontWeight: 700, textAlign: 'center' }}>Зв'яжіться з нами</Title>
                 <Paragraph style={{ marginBottom: 24, color: 'var(--mocha-mousse-dark4)', fontSize: screens.xs ? 15 : 18, textAlign: 'center' }}>Маєте питання? Заповніть форму, і ми відповімо найближчим часом.</Paragraph>
                 <Form

@@ -1,0 +1,106 @@
+/* About Page Styles */
+
+/* Override global card styles for About page */
+.about-page .ant-card {
+  transition: box-shadow 0.3s, transform 0.3s;
+  overflow: hidden !important;
+}
+
+.about-page .ant-card:hover {
+  box-shadow: 0 12px 36px 0 rgba(158,121,103,0.18);
+  transform: translateY(-4px) scale(1.02);
+}
+
+/* Ensure content stays within card boundaries */
+.about-page .ant-card-body {
+  overflow: hidden !important;
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-page .ant-card {
+    margin-bottom: 16px;
+  }
+  
+  .about-page .ant-card-body {
+    padding: 16px !important;
+  }
+}
+
+/* Фіксована висота для блоків на десктопі */
+@media (min-width: 769px) {
+  .about-page .ant-card {
+    height: 420px !important;
+    min-height: 420px !important;
+    max-height: 420px !important;
+  }
+  
+  .about-page .ant-card-body {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+  }
+  
+  /* Блок "Зв'яжіться з нами" з динамічною висотою */
+  .about-page .contact-form-card {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+  }
+  
+  .about-page .contact-form-card .ant-card-body {
+    height: auto !important;
+    display: block !important;
+    justify-content: flex-start !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page .ant-card {
+    margin-bottom: 12px;
+  }
+  
+  .about-page .ant-card-body {
+    padding: 12px !important;
+  }
+}
+
+/* Специфічні стилі для зображень на сторінці About */
+.about-page .ant-image {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Контейнери зображень на десктопі */
+@media (min-width: 769px) {
+  .about-page .ant-card .ant-image {
+    height: 100% !important;
+  }
+  
+  .about-page .ant-card .ant-image .ant-image-img {
+    height: 100% !important;
+  }
+}
+
+.about-page .ant-image-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* Специфічні стилі для четвертої картинки на мобільних */
+@media (max-width: 480px) {
+  .about-page .ant-image-img {
+    object-position: center 30% !important;
+  }
+  
+  /* Збільшена висота для четвертої картинки */
+  .about-page .ant-card .ant-image {
+    height: 350px !important;
+  }
+} 

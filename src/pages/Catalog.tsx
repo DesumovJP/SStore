@@ -174,7 +174,7 @@ const Catalog: React.FC = () => {
   );
 
   return (
-    <Layout style={{ background: 'var(--mocha-mousse-light1)' }}>
+    <Layout className="catalog-page" style={{ background: 'var(--mocha-mousse-light1)' }}>
       <Content style={{ padding: screens.xs ? '16px 0' : '48px 0' }}>
         <div className="container" style={{ maxWidth: 1900, margin: '0 auto', padding: screens.xs ? '0 8px' : '0 24px' }}>
           {/* Breadcrumb тільки для ПК */}
@@ -192,7 +192,21 @@ const Catalog: React.FC = () => {
           <Paragraph style={{ textAlign: 'center', marginBottom: screens.xs ? 24 : 40, color: 'var(--mocha-mousse-dark4)', fontSize: screens.xs ? 15 : 18 }}>Знайдіть ідеальну пару для себе</Paragraph>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%', marginBottom: screens.xs ? 16 : 32 }}>
             {screens.xs ? (
-              <Button icon={<FilterOutlined />} size={screens.xs ? 'middle' : 'large'} style={{ borderRadius: 10, fontWeight: 600, marginRight: 8 }} onClick={() => setFilterOpen(true)}>
+              <Button 
+                icon={<FilterOutlined />} 
+                size={screens.xs ? 'middle' : 'large'} 
+                style={{ 
+                  borderRadius: 10, 
+                  fontWeight: 600, 
+                  marginRight: 8,
+                  width: screens.xs ? 120 : 260,
+                  height: screens.xs ? 36 : 40,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }} 
+                onClick={() => setFilterOpen(true)}
+              >
                 Фільтри
               </Button>
             ) : null}
@@ -200,7 +214,12 @@ const Catalog: React.FC = () => {
               placeholder="Пошук за назвою"
               value={searchTerm}
               onChange={e => setSearchTerm(e.target.value)}
-              style={{ maxWidth: 260, marginRight: 12, borderRadius: 10 }}
+              style={{ 
+                width: screens.xs ? 120 : 260, 
+                marginRight: 12, 
+                borderRadius: 10,
+                height: screens.xs ? 36 : 40
+              }}
               allowClear
             />
             <div style={{ flex: 1 }} />
@@ -208,7 +227,18 @@ const Catalog: React.FC = () => {
               overlay={<Menu onClick={handleSort} items={sortOptions} />}
               trigger={['click']}
             >
-              <Button size={screens.xs ? 'middle' : 'large'} style={{ borderRadius: 10, fontWeight: 600, minWidth: 120, justifyContent: 'center' }}>
+              <Button 
+                size={screens.xs ? 'middle' : 'large'} 
+                style={{ 
+                  borderRadius: 10, 
+                  fontWeight: 600, 
+                  width: screens.xs ? 120 : 260,
+                  height: screens.xs ? 36 : 40,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
                 Сортувати <DownOutlined />
               </Button>
             </Dropdown>
@@ -280,55 +310,101 @@ const Catalog: React.FC = () => {
                         flexDirection: 'column',
                         transition: 'box-shadow 0.3s, transform 0.3s',
                       }}
-                      bodyStyle={{ padding: screens.xs ? 12 : 24, display: 'flex', flexDirection: 'column' }}
+                      bodyStyle={{ padding: screens.xs ? 12 : 24, display: 'flex', flexDirection: 'column', height: '100%' }}
                     >
-                      <div style={{ display: 'flex', flexDirection: 'column' }}>
-                        <Title level={4} style={{ color: 'var(--mocha-mousse-main)', marginBottom: 4, fontWeight: 600, fontSize: screens.xs ? 14 : 20 }}>{product.name}</Title>
-                        <Paragraph className="product-description" style={{ color: 'var(--mocha-mousse-dark4)', marginBottom: 6, fontSize: screens.xs ? 11 : 14, display: '-webkit-box', WebkitLineClamp: screens.xs ? 2 : 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.description}</Paragraph>
-                        <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 4, marginBottom: 18 }}>
-                          <span style={{ fontSize: 12, color: '#888', marginRight: 6 }}>Розмір:</span>
-                          {product.availableSizes.map(size => {
-                            const selected = selectedSizesMap[product.id!] === size;
-                            return (
-                              <button
-                                key={size}
-                                type="button"
-                                onClick={() => handleSizeSelect(product.id!, size)}
-                                style={{
-                                  display: 'inline-block',
-                                  border: selected ? '1.5px solid #111' : '1px solid #ddd',
-                                  borderRadius: 4,
-                                  padding: '2px 7px',
-                                  fontSize: 12,
-                                  color: selected ? '#fff' : '#555',
-                                  background: selected ? '#111' : '#fafafa',
-                                  marginRight: 2,
-                                  marginBottom: 2,
-                                  cursor: 'pointer',
-                                  fontWeight: 500,
-                                  transition: 'background 0.2s, color 0.2s, border 0.2s',
-                                }}
-                                onMouseOver={e => {
-                                  if (!selected) {
-                                    (e.currentTarget as HTMLButtonElement).style.background = '#a97c50';
-                                    (e.currentTarget as HTMLButtonElement).style.color = '#fff';
-                                  }
-                                }}
-                                onMouseOut={e => {
-                                  if (!selected) {
-                                    (e.currentTarget as HTMLButtonElement).style.background = '#fafafa';
-                                    (e.currentTarget as HTMLButtonElement).style.color = '#555';
-                                  }
-                                }}
+                                            <Title level={4} style={{ color: 'var(--mocha-mousse-main)', marginBottom: 4, fontWeight: 600, fontSize: screens.xs ? 14 : 20 }}>{product.name}</Title>
+                      <Paragraph className="product-description" style={{ color: 'var(--mocha-mousse-dark4)', marginBottom: 6, fontSize: screens.xs ? 11 : 14, display: '-webkit-box', WebkitLineClamp: screens.xs ? 2 : 3, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{product.description}</Paragraph>
+                        
+                        {/* Нижня частина - розміри, ціна і кнопки */}
+                        <div style={{ marginTop: 'auto' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 4, marginBottom: 12 }}>
+                            <span style={{ fontSize: 12, color: '#888', marginRight: 6 }}>Розмір:</span>
+                            {screens.xs ? (
+                              // Мобільна версія - Dropdown
+                              <Dropdown
+                                overlay={
+                                  <Menu
+                                    onClick={({ key }) => handleSizeSelect(product.id!, parseInt(key))}
+                                    items={product.availableSizes.map(size => ({
+                                      key: size.toString(),
+                                      label: `Розмір ${size}`,
+                                      style: {
+                                        backgroundColor: selectedSizesMap[product.id!] === size ? 'var(--mocha-mousse-main)' : 'transparent',
+                                        color: selectedSizesMap[product.id!] === size ? 'white' : 'inherit'
+                                      }
+                                    }))}
+                                    style={{
+                                      maxHeight: 200,
+                                      overflowY: 'auto'
+                                    }}
+                                  />
+                                }
+                                trigger={['click']}
                               >
-                                {size}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                      <Text strong style={{ fontSize: screens.xs ? 15 : 20, color: 'var(--mocha-mousse-dark5)', marginBottom: 8 }}>{product.price} грн</Text>
-                      <div style={{ display: 'flex', gap: 8, marginTop: 12, alignItems: 'center' }}>
+                                <Button
+                                  size="small"
+                                  style={{
+                                    border: selectedSizesMap[product.id!] ? '1.5px solid var(--mocha-mousse-main)' : '1px solid #ddd',
+                                    borderRadius: 6,
+                                    fontSize: 11,
+                                    color: selectedSizesMap[product.id!] ? 'var(--mocha-mousse-main)' : '#555',
+                                    background: selectedSizesMap[product.id!] ? 'rgba(158,121,103,0.1)' : '#fafafa',
+                                    fontWeight: 500,
+                                    height: 24,
+                                    padding: '0 8px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 4
+                                  }}
+                                >
+                                  {selectedSizesMap[product.id!] ? `Розмір ${selectedSizesMap[product.id!]}` : 'Оберіть розмір'}
+                                  <DownOutlined style={{ fontSize: 8 }} />
+                                </Button>
+                              </Dropdown>
+                            ) : (
+                              // Десктопна версія - Квадратики
+                              product.availableSizes.map(size => {
+                                const selected = selectedSizesMap[product.id!] === size;
+                                return (
+                                  <button
+                                    key={size}
+                                    type="button"
+                                    onClick={() => handleSizeSelect(product.id!, size)}
+                                    style={{
+                                      display: 'inline-block',
+                                      border: selected ? '1.5px solid #111' : '1px solid #ddd',
+                                      borderRadius: 4,
+                                      padding: '2px 7px',
+                                      fontSize: 12,
+                                      color: selected ? '#fff' : '#555',
+                                      background: selected ? '#111' : '#fafafa',
+                                      marginRight: 2,
+                                      marginBottom: 2,
+                                      cursor: 'pointer',
+                                      fontWeight: 500,
+                                      transition: 'background 0.2s, color 0.2s, border 0.2s',
+                                    }}
+                                    onMouseOver={e => {
+                                      if (!selected) {
+                                        (e.currentTarget as HTMLButtonElement).style.background = '#a97c50';
+                                        (e.currentTarget as HTMLButtonElement).style.color = '#fff';
+                                      }
+                                    }}
+                                    onMouseOut={e => {
+                                      if (!selected) {
+                                        (e.currentTarget as HTMLButtonElement).style.background = '#fafafa';
+                                        (e.currentTarget as HTMLButtonElement).style.color = '#555';
+                                      }
+                                    }}
+                                  >
+                                    {size}
+                                  </button>
+                                );
+                              })
+                            )}
+                          </div>
+                          <Text strong style={{ fontSize: screens.xs ? 15 : 20, color: 'var(--mocha-mousse-dark5)', marginBottom: 8 }}>{product.price} грн</Text>
+                          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                         <button
                           onClick={() => window.location.href = `/product/${product.id}`}
                           style={{
@@ -448,6 +524,7 @@ const Catalog: React.FC = () => {
                             }} 
                           />
                         </Button>
+                        </div>
                       </div>
                     </Card>
                   </Col>

@@ -3,13 +3,13 @@ import { getFirestore } from 'firebase/firestore';
 
 // Конфігурація Firebase
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyCmkgvmWtC6vyqLdbUuH-3msicYRt885dU",
+  authDomain: "test-task-project-ec1d3.firebaseapp.com",
+  projectId: "test-task-project-ec1d3",
+  storageBucket: "test-task-project-ec1d3.firebasestorage.app",
+  messagingSenderId: "645851997520",
+  appId: "1:645851997520:web:f0f5c0fb7ccde2d5023855",
+  measurementId: "G-LEW3D0F4JP"
 };
 
 // Ініціалізація Firebase

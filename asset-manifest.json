@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/SStore/static/css/main.56409aff.css",
+    "main.js": "/SStore/static/js/main.949028d0.js",
+    "static/media/pexels-hamza01nsr-12725051.jpg": "/SStore/static/media/pexels-hamza01nsr-12725051.357ba8342a94075168d8.jpg",
+    "static/media/aryan-r-Y_wyAQElkR4-unsplash.jpg": "/SStore/static/media/aryan-r-Y_wyAQElkR4-unsplash.1ecda2c8f29461045a4f.jpg",
+    "static/media/alexandr-choi-CRvUeE2V0TA-unsplash.jpg": "/SStore/static/media/alexandr-choi-CRvUeE2V0TA-unsplash.8563a7e26a448a682e48.jpg",
+    "static/media/pexels-melvin-buezo-1253763-2529159.jpg": "/SStore/static/media/pexels-melvin-buezo-1253763-2529159.2800287f92f25ac123e4.jpg",
+    "static/media/shyam-mishra-rdMzDrU7vNg-unsplash (1).jpg": "/SStore/static/media/shyam-mishra-rdMzDrU7vNg-unsplash (1).06638cfe1ca47be11e95.jpg",
+    "static/media/shyam-mishra-rdMzDrU7vNg-unsplash.jpg": "/SStore/static/media/shyam-mishra-rdMzDrU7vNg-unsplash.06638cfe1ca47be11e95.jpg",
+    "static/media/pexels-fsoerensen-2404959.jpg": "/SStore/static/media/pexels-fsoerensen-2404959.614a9e7ca3ceec7df421.jpg",
+    "static/media/yiquan-zhang-Nx9ghtb0IpE-unsplash.jpg": "/SStore/static/media/yiquan-zhang-Nx9ghtb0IpE-unsplash.257a8cb274852182c995.jpg",
+    "static/media/Woman.avif": "/SStore/static/media/Woman.a70fddd432f506178215.avif",
+    "static/media/Man.jpg": "/SStore/static/media/Man.5d2a9e194e7af35de494.jpg",
+    "static/media/discount.webp": "/SStore/static/media/discount.044ec8894f26f823c5a2.webp",
+    "static/media/kids.jpg": "/SStore/static/media/kids.fd8152e9e20ec7ec4b83.jpg",
+    "index.html": "/SStore/index.html",
+    "main.56409aff.css.map": "/SStore/static/css/main.56409aff.css.map",
+    "main.949028d0.js.map": "/SStore/static/js/main.949028d0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56409aff.css",
+    "static/js/main.949028d0.js"
+  ]
+}
